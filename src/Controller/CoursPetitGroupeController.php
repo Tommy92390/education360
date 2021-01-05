@@ -9,7 +9,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class CoursPetitGroupeController extends AbstractController
 {
     /**
-     * @Route("/cours_petit_groupe", name="cours_petit_groupe")
+     * @Route("/cours/petit_groupe", name="cours_petit_groupe")
      */
     public function index(): Response
     {
