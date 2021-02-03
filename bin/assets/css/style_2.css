@@ -1,0 +1,317 @@
+* {
+  box-sizing: border-box;
+}
+
+/* Add a black background color to the top navigation */
+.topnav {
+  background-color: #333;
+  overflow: hidden;
+}
+
+/* Style the links inside the navigation bar */
+.topnav a {
+  float: left;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 19px 16px;
+  text-decoration: none;
+  font-size: 28px;
+}
+
+/* Add an active class to highlight the current page */
+.active {
+  background-color: #4CAF50;
+  color: white;
+}
+
+/* Hide the link that should open and close the topnav on small screens */
+.topnav .icon {
+  display: none;
+}
+
+/* Dropdown container - needed to position the dropdown content */
+.dropdown {
+  float: left;
+  overflow: hidden;
+}
+
+.first-picture{
+  background: grey;
+  transition: width 2s;
+}
+/* Style the dropdown button to fit inside the topnav */
+.dropdown .dropbtn {
+  font-size: 17px;
+  border: none;
+  outline: none;
+  color: white;
+  padding: 14px 16px;
+  background-color: #4CAF50;
+  font-family: inherit;
+  margin: 0;
+  text-align: center;
+  display: inline-block;
+  border-radius: 12px;
+}
+
+/* .nav-bar-btn {
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  border-radius: 12px;
+} */
+
+/* Style the dropdown content (hidden by default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+/* Style the links inside the dropdown */
+.dropdown-content a {
+  float: none;
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+/* Add a dark background on topnav links and the dropdown button on hover */
+.topnav a:hover, .dropdown:hover .dropbtn {
+  background-color: #555;
+  color: white;
+}
+
+/* Add a grey background to dropdown links on hover */
+.dropdown-content a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+/* Show the dropdown menu when the user moves the mouse over the dropdown button */
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+/* When the screen is less than 600 pixels wide, hide all links, except for the first one ("Home"). Show the link that contains should open and close the topnav (.icon) */
+@media screen and (max-width: 600px) {
+  .topnav a:not(:first-child), .dropdown .dropbtn {
+    display: none;
+  }
+  .topnav a.icon {
+    float: right;
+    display: block;
+  }
+}
+
+/* The "responsive" class is added to the topnav with JavaScript when the user clicks on the icon. This class makes the topnav look good on small screens (display the links vertically instead of horizontally) */
+@media screen and (max-width: 600px) {
+  .topnav.responsive {position: relative;}
+  .topnav.responsive a.icon {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+  .topnav.responsive a {
+    float: none;
+    display: block;
+    text-align: left;
+  }
+  .topnav.responsive .dropdown {float: none;}
+  .topnav.responsive .dropdown-content {position: relative;}
+  .topnav.responsive .dropdown .dropbtn {
+    display: block;
+    width: 100%;
+    text-align: left;
+  }
+}
+
+.second-title{
+  font-size: 3em;
+  margin-top: 0px;
+  padding-left: 156px;
+}
+
+#first-block{
+  display: flex;
+  justify-content: start;
+  align-items: flex-start;
+}
+
+.first-button{
+  border-top-style: outset;
+  border-left-style: outset;
+  color: blue;
+}
+
+.second-block{
+  display: flex;
+  justify-content: flex-start;
+  align-content: flex-start;
+  flex-wrap: wrap;
+  flex-basis: 20px;
+  flex-grow: 1;
+  flex-shrink: 3;
+  border: 2px solid blue;
+  margin: 10px 0px;
+  padding: 0 4px;
+}
+
+.img{
+  width: 50%;
+  height: 50%;
+}
+
+.first-text{
+  margin-bottom: 4em;
+} 
+
+/* .second-img{
+  margin-top: 96px;
+} */
+
+.third-block{
+  background-color: #ddd;
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+}
+
+.img1{
+  width: 85%;
+}
+.img2{
+  width: 75%;
+}
+
+/* fourth-block */
+
+.row {
+  display: flex;
+  border: 2px solid blue;
+  margin: 10px 0px;
+  padding: 0 4px;
+  height: 250px;
+  background-color:#3eb2cf;
+}
+
+.column{
+  display: flex;
+  justify-content: flex-start;
+  align-content: flex-start;
+  flex-basis: 20px;
+  flex-grow: 1;
+  flex-shrink: 1;
+  padding: 10px 0px;
+  border: 2px solid green;
+  margin: 5px;
+}
+
+/* Create four equal columns that sits next to each other */
+/* .column {
+  max-width: 25%;
+  padding: 0 4px;
+  display: flex;
+}
+
+.column img {
+  margin-top: 8px;
+  vertical-align: middle;
+  width: 100%;
+} */
+
+/* Responsive layout - makes a two column-layout instead of four columns */
+@media screen and (max-width: 800px) {
+  .column {
+    flex: 50%;
+    max-width: 50%;
+  }
+}
+
+/* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+  .column {
+    flex: 100%;
+    max-width: 100%;
+  }
+}
+/* #aide_soignant{
+  height: 240px;
+}
+#programmation{
+  height: 240px;
+} */
+/* 
+.container {
+  position: relative;
+  width: 50%;
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+} */
+
+.image {
+   height: 240px;
+   flex-grow: 1;
+}
+
+.overlay {
+  position: absolute;
+  bottom: 100%;
+  left: 0;
+  right: 0;
+  background-color: #008CBA;
+  overflow: hidden;
+  width: 100%;
+  height:0;
+  transition: .5s ease;
+}
+
+.container:hover .overlay {
+  bottom: 0;
+  height: 100%;
+}
+
+.text {
+  color: white;
+  font-size: 20px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.fifth-block{
+  width: 50%;
+}
+
+.sixth-block{
+  width: 50%;
+}
+
+.seventh_block{
+  transition: all 3 s;
+  object-fit: cover;
+}
+
+.img_seventh_block {
+  vertical-align: middle;
+  border-style: none;
+  width: 50%;
+  height: 50%;
+}
