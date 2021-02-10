@@ -1,31 +1,134 @@
-{% extends 'base.html.twig' %}
-{% block title %}Connexion{% endblock %}
+{% block title %}Log in !{% endblock %}
+
+    {% block stylesheets %}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width device-width, initial-scale=1"> 
+    <link rel="stylesheet" type="text/css" href="assets/css/style_2.css">
+    {% endblock %}
+
+{% block nav %}
+<div class="topnav" id="myTopnav">
+  <a href="#home" class="active">Education 360</a>
+  <div class="dropdown">
+    <span class="nav-bar-btn"><a class="dropbtn">Soutien Scolaire
+    </a></span>
+    <div class="dropdown-content">
+      <ul>
+        <li><a class="dropdown-item" href="#">Cours particulier à domicile</a></li>
+        <li><a class="dropdown-item" href="#">Cours en petit groupe de 3 à 5 élèves au centre</a></li>
+        <li><a class="dropdown-item" href="#">Cours particulier en ligne</a></li>
+        <li><a class="dropdown-item" href="#">Coaching scolaire au quotidien</a></li>
+        <li><hr class="dropdown-divider"></li>
+        <li><a class="dropdown-item" href="#">Organisation, gestion et méthodologie</a></li>
+        <li><a class="dropdown-item" href="#">Sorties d'école et aides aux devoirs</a></li>
+        <li><a class="dropdown-item" href="#">Stage intensif durant les vacances scolaires</a></li>
+        <li><a class="dropdown-item" href="#">Cours de programmation</a></li>
+      </ul>
+    </div>  
+  </div>
+  <div class="dropdown">
+    <span class="nav-bar-btn"><a class="dropbtn">Formation Professionnelle
+    </a></span>
+    <div class="dropdown-content">
+        <ul>
+          <li><a class="dropdown-item" href="#">Bureautique</a></li>
+          <li><a class="dropdown-item" href="#">Français</a></li>
+          <li><a class="dropdown-item" href="#">FLE (Français Langue Etrangère)</a></li>
+          <li><a class="dropdown-item" href="#">Anglais</a></li>
+          <li><hr class="dropdown-divider"></li>
+          <li><a class="dropdown-item" href="#">Programmation</a></li>
+          <li><a class="dropdown-item" href="#">Web développeur</a></li>
+          <li><a class="dropdown-item" href="#">Web designer</a></li>
+          <li><a class="dropdown-item" href="#">Comptabilité</a></li>
+          <li><a class="dropdown-item" href="#">Création et gestion d'entreprise</a></li>
+        </ul>
+      </li>
+    </div>
+  </div>
+  <div class="dropdown">
+    <span class="nav-bar-btn"><a class="dropbtn">La petite classe
+    </a></span>
+    <div class="dropdown-content">
+        <ul>
+          <li><a class="dropdown-item" href="#">Garde d'enfant classique</a></li>
+          <li><a class="dropdown-item" href="#">Garde d'enfant en anglais</a></li>
+          <li><a class="dropdown-item" href="#">Sortie d'école avec initiation à anglais</a></li>
+          <li><a class="dropdown-item" href="#">Activités et ateliers ludiques en anglais</a></li>
+        </ul>
+      </li>
+    </div>
+  </div>
+  <a class="dropbtn">Recrutement</a>
+  <a class="dropbtn">Contacts</a>
+</div>
+  <a href="javascript:void(0);" class="icon" onclick="myFunction()">&#9776;</a>
+</div>
+{% endblock %}
+
 {% block body %}
-    <form method="post">
-        {% if error %}
-            <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-        {% endif %}
-        {% if app.user %}
-            <div class="mb-3">
-                Vous êtes déjà connecté(e) avec le compte : {{ app.user.username }}, <a href="{{ path('app_logout') }}">déconnexion</a>
-            </div>
-        {% endif %}
-        <h1 class="h3 mb-3 font-weight-normal">Merci de vous connecter</h1>
-        <label for="inputUsername">Nom d'utilisateur</label>
-        <input type="text" value="{{ last_username }}" name="username" id="inputUsername" class="form-control" required autofocus>
-        <label for="inputPassword">Mot de passe </label>
-        <input type="password" name="password" id="inputPassword" class="form-control" required>
-        <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
-        {#  Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
-   See https://symfony.com/doc/current/security/remember_me.html #}
+<form method="post">
+    {% if error %}
+        <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+    {% endif %}
+
+    {% if app.user %}
+        <div class="mb-3">
+            You are logged in as {{ app.user.username }}, <a href="{{ path('app_logout') }}">Logout</a>
+        </div>
+    {% endif %}
+
+    <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+    <label for="inputUsername">Username</label>
+    <input type="text" value="{{ last_username }}" name="username" id="inputUsername" class="form-control" required autofocus>
+    <label for="inputPassword">Password</label>
+    <input type="password" name="password" id="inputPassword" class="form-control" required>
+
+    <input type="hidden" name="_csrf_token"
+           value="{{ csrf_token('authenticate') }}"
+    >
+
+    {#
+        Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
+        See https://symfony.com/doc/current/security/remember_me.html
+
         <div class="checkbox mb-3">
             <label>
-                <input type="checkbox" name="_remember_me"> Se souvenir de moi
+                <input type="checkbox" name="_remember_me"> Remember me
             </label>
         </div>
-        <div class="text-center">
-        <button class="btn btn-outline-primary" type="submit"> Connexion </button>
-        </div>
-        <br>
-    </form>
+    #}
+
+    <button class="btn btn-lg btn-primary" type="submit">
+        Sign in
+    </button>
+</form>
 {% endblock %}
+
+{% block footer %}
+<footer class="bg-yellow" id="footer">
+	<section>
+	<h2>Réseaux sociaux</h2>
+		<a href="https://facebook.com/"><i class="fab fa-facebook-square fa-5x"></i></a>
+		<a href="https://twitter.com/"><i class="fab fa-twitter-square fa-5x"></i></a>
+		<a href="https://linkedin.com/"><i class="fab fa-linkedin fa-5x"></i></a>
+	</section>
+    <section>
+    <h3>Contacts</h3>
+        <div>
+            <p>
+                Téléphone : 01 42 00 96 24 </br>
+                3 Boulevard d’Indochine 75019 Paris </br>          
+                education360paris@gmail.com
+            </p>
+        </div>
+        <div>
+            <label>News sur l'éducation</label>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore vitae voluptates fugiat! Voluptas, quos! Quaerat numquam illum vero qui sint! Suscipit ratione molestias nulla veniam soluta saepe minima consectetur nemo?</p>
+        </div>
+        <a href="contact.php" id="formContact" class="btn btn-outline-warning">Formulaire de contact</a>
+    </section>
+	<label>&copy; Education 360 - 2020 - <a href="mentions-legales.php">Mention légales</a></label>
+</footer>
+<script src="assets/js/nav_bar.js"></script>
+{% endblock %}
+

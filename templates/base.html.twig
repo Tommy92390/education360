@@ -1,92 +1,138 @@
-<!DOCTYPE html>
-<html lang="fr">
-<style>
-    #navbarDropdown {
+{% extends 'base.html.twig' %}
 
-    }
-</style>
-<head>
-    <meta charset="UTF-8">
-    <title>{% block title %} Education360 - {{ controller_name }} {% endblock %}</title>
-    {% block stylesheets %}{% endblock %}
+{% block title %}Welcome!{% endblock %}
+
+    {% block stylesheets %}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width device-width, initial-scale=1"> 
+    <link rel="stylesheet" type="text/css" href="assets/css/style_2.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
-</head>
-<body>
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary" >
-    <div class="container-fluid">
-        <a class="navbar-brand" href="#">|</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="/">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/contact">Contact</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Notre site</a>
-                </li>
-                <li class="nav-item dropdown mr-auto">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"> {% if app.user %} {{ app.user.username }} {% else %} Compte {% endif %} </a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        {% if app.user %}
-                            <li><a class="dropdown-item" href="/logout">Déconnexion</a></li>
-                        {% else %}
-                            <li><a class="dropdown-item" href="/login">Connexion</a></li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-                            <li><a class="dropdown-item" href="/register">Créer un compte</a></li>
-                        {% endif %}
-                    </ul>
-                </li>
-            </ul>
-        </div>
-    </div>
-</nav>
-{% block body %} {% endblock %}
-{% block javascripts %}{% endblock %}
+    {% endblock %}
+
+{% block javascripts %}
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
-{% block footer %}
-    <footer class="bg-primary text-white text-center text-lg-start">
-        <!-- Grid container -->
-        <div class="container p-4">
-            <!--Grid row-->
-            <div class="row">
-                <!--Grid column-->
-                <div class="col-lg-6 col-md-12 mb-4 mb-md-0">
-                    <h5 class="text-uppercase">Footer text</h5>
-                    <p>
-                        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iste atque ea quis
-                        molestias. Fugiat pariatur maxime quis culpa corporis vitae repudiandae
-                        aliquam voluptatem veniam, est atque cumque eum delectus sint!
-                    </p>
-                </div>
-                <!--Grid column-->
-                <!--Grid column-->
-                <div class="col-lg-6 col-md-12 mb-4 mb-md-0">
-                    <h5 class="text-uppercase">Contact</h5>
-                    <p>
-                        Téléphone : 01 42 00 96 24 <br>
-                        3 Boulevard d’Indochine 75019 Paris <br>
-                        education360paris@gmail.com
-                    </p>
-                </div>
-                <!--Grid column-->
-            </div>
-            <!--Grid row-->
-        </div>
-        <!-- Grid container -->
-        <!-- Copyright -->
-        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2)">
-            © 2021 Copyright:
-            <a class="text-white" href="/">Martin Guillaume</a>
-        </div>
-        <!-- Copyright -->
-    </footer>
 {% endblock %}
-</body>
-</html>
+
+{% block nav %}
+<div class="topnav" id="myTopnav">
+  <a href="#home" class="active">Education 360</a>
+  <div class="dropdown">
+    <span class="nav-bar-btn"><a class="dropbtn">Soutien Scolaire
+    </a></span>
+    <div class="dropdown-content">
+      <ul>
+        <li><a class="dropdown-item" href="#">Cours particulier à domicile</a></li>
+        <li><a class="dropdown-item" href="#">Cours en petit groupe de 3 à 5 élèves au centre</a></li>
+        <li><a class="dropdown-item" href="#">Cours particulier en ligne</a></li>
+        <li><a class="dropdown-item" href="#">Coaching scolaire au quotidien</a></li>
+        <li><hr class="dropdown-divider"></li>
+        <li><a class="dropdown-item" href="#">Organisation, gestion et méthodologie</a></li>
+        <li><a class="dropdown-item" href="#">Sorties d'école et aides aux devoirs</a></li>
+        <li><a class="dropdown-item" href="#">Stage intensif durant les vacances scolaires</a></li>
+        <li><a class="dropdown-item" href="#">Cours de programmation</a></li>
+      </ul>
+    </div>  
+  </div>
+  <div class="dropdown">
+    <span class="nav-bar-btn"><a class="dropbtn">Formation Professionnelle
+    </a></span>
+    <div class="dropdown-content">
+        <ul>
+          <li><a class="dropdown-item" href="#">Bureautique</a></li>
+          <li><a class="dropdown-item" href="#">Français</a></li>
+          <li><a class="dropdown-item" href="#">FLE (Français Langue Etrangère)</a></li>
+          <li><a class="dropdown-item" href="#">Anglais</a></li>
+          <li><hr class="dropdown-divider"></li>
+          <li><a class="dropdown-item" href="#">Programmation</a></li>
+          <li><a class="dropdown-item" href="#">Web développeur</a></li>
+          <li><a class="dropdown-item" href="#">Web designer</a></li>
+          <li><a class="dropdown-item" href="#">Comptabilité</a></li>
+          <li><a class="dropdown-item" href="#">Création et gestion d'entreprise</a></li>
+        </ul>
+      </li>
+    </div>
+  </div>
+  <div class="dropdown">
+    <span class="nav-bar-btn"><a class="dropbtn">La petite classe
+    </a></span>
+    <div class="dropdown-content">
+        <ul>
+          <li><a class="dropdown-item" href="#">Garde d'enfant classique</a></li>
+          <li><a class="dropdown-item" href="#">Garde d'enfant en anglais</a></li>
+          <li><a class="dropdown-item" href="#">Sortie d'école avec initiation à anglais</a></li>
+          <li><a class="dropdown-item" href="#">Activités et ateliers ludiques en anglais</a></li>
+        </ul>
+      </li>
+    </div>
+  </div>
+  <a class="dropbtn">Recrutement</a>
+  <a class="dropbtn">Contacts</a>
+</div>
+  <a href="javascript:void(0);" class="icon" onclick="myFunction()">&#9776;</a>
+</div>
+{% endblock %}
+
+{% block body %}
+    <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">|</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://www.google.fr">Google</a>
+                    </li>
+                    <li class="nav-item">
+                    <a class="nav-link" href="https://www.education360.fr">Notre site</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Liste
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="https://www.google.fr">Google</a></li>
+                            <li><a class="dropdown-item" href="https://www.amazon.fr">Amazon</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#">Rien</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+{% endblock %}
+
+{% block footer %}
+<footer class="bg-yellow" id="footer">
+	<section>
+	<h2>Réseaux sociaux</h2>
+		<a href="https://facebook.com/"><i class="fab fa-facebook-square fa-5x"></i></a>
+		<a href="https://twitter.com/"><i class="fab fa-twitter-square fa-5x"></i></a>
+		<a href="https://linkedin.com/"><i class="fab fa-linkedin fa-5x"></i></a>
+	</section>
+    <section>
+    <h3>Contacts</h3>
+        <div>
+            <p>
+                Téléphone : 01 42 00 96 24 </br>
+                3 Boulevard d’Indochine 75019 Paris </br>          
+                education360paris@gmail.com
+            </p>
+        </div>
+        <div>
+            <label>News sur l'éducation</label>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore vitae voluptates fugiat! Voluptas, quos! Quaerat numquam illum vero qui sint! Suscipit ratione molestias nulla veniam soluta saepe minima consectetur nemo?</p>
+        </div>
+        <a href="contact.php" id="formContact" class="btn btn-outline-warning">Formulaire de contact</a>
+    </section>
+	<label>&copy; Education 360 - 2020 - <a href="mentions-legales.php">Mention légales</a></label>
+</footer>
+<script src="assets/js/nav_bar.js"></script>
+{% endblock %}
+
