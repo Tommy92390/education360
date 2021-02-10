@@ -1,0 +1,217 @@
+---
+- hosts: all
+  sudo: true
+  vars:
+    domain: application-sf.local
+    admin: contact@application-sf.local
+    directory: application-sf/web
+  handlers:
+    - name: restart apache2
+      service: name=apache2 state=restarted
+    - name: restart postgresql
+      service: name=postgresql state=restarted
+    - name: restart rsync
+      service: name=rsync state=restarted
+  tasks:
+    - name: Mise à jour de l'apt cache
+      apt: update_cache=yes
+
+    - name: installer aptitude
+      apt: name=aptitude state=present
+
+    - name: Mise à jour système
+      apt: upgrade=full
+
+    - name: installer acl
+      apt: name=acl state=present
+
+    - name: installer curl
+      apt: name=curl state=present
+
+    - name: installer htop
+      apt: name=htop state=present
+
+    - name: installer zip
+      apt: name=zip state=present
+
+    - name: installer unzip
+      apt: name=unzip state=present
+
+    - name: installer git
+      apt: name=git state=present
+
+    - name: installer apache2
+      apt: name=apache2 state=present
+
+    - name: installer apache2-doc
+      apt: name=apache2-doc state=present
+
+    - name: installer apache2-utils
+      apt: name=apache2-utils state=present
+
+    - name: installer libexpat1
+      apt: name=libexpat1 state=present
+
+    - name: installer libxrender1
+      apt: name=libxrender1 state=present
+
+    - name: installer libfontconfig
+      apt: name=libfontconfig state=present
+
+    - name: installer ssl-cert
+      apt: name=ssl-cert state=present
+
+    - name: a2disconf apache2-doc
+      command: a2disconf apache2-doc
+      notify:
+        - restart apache2
+
+    - name: create vhost
+      template: src=virtualhost.conf dest=/etc/apache2/sites-available/{{ domain }}.conf
+
+    - name: a2ensite
+      command: a2ensite {{ domain }}.conf
+      args:
+        creates: /etc/apache2/site-enabled/{{ domain }}.conf
+      notify:
+        - restart apache2
+
+    - name: activation mod-rewrite
+      apache2_module: name=rewrite state=present
+      notify:
+        - restart apache2
+
+    - name: activation mod-headers
+      apache2_module: name=headers state=present
+      notify:
+        - restart apache2
+
+    - name: activation mod-headers
+      apache2_module: name=headers state=present
+      notify:
+        - restart apache2
+
+    - name: installer ca-certificates
+      apt: name=ca-certificates state=present
+
+    - name: installer lsb-release
+      apt: name=lsb-release state=present
+
+    - name: installer apt-transport-https
+      apt: name=apt-transport-https state=present
+
+    - name: Add an Apt signing key, uses whichever key is at the URL
+      apt_key:
+        url: https://packages.sury.org/php/apt.gpg
+        state: present
+        validate_certs: no
+
+    - apt_repository:
+        repo: deb https://packages.sury.org/php/ stretch main
+        state: present
+
+    - name: Mise à jour de l'apt cache
+      apt: update_cache=yes
+
+    # PHP 7.4
+    - name: installer php7.4
+      apt: name=php7.4 state=present
+
+    - name: installer php7.4-common
+      apt: name=php7.4-common state=present
+
+    - name: php7.4-cli
+      apt: name=php7.4-cli state=present
+
+    - name: php7.4-dom
+      apt: name=php7.4-dom state=present
+
+    - name: php7.4-xmlrpc
+      apt: name=php7.4-xmlrpc state=present
+
+    - name: php7.4-mbstring
+      apt: name=php7.4-mbstring state=present
+
+    - name: php7.4-intl
+      apt: name=php7.4-intl state=present
+
+    - name: php7.4-pgsql
+      apt: name=php7.4-pgsql state=present
+
+    - name: installer php7.4-curl
+      apt: name=php7.4-curl state=present
+
+    - name: installer php7.4-zip
+      apt: name=php7.4-zip state=present
+
+    - name: Modify date.time zone php.ini apache
+      replace:
+        dest=/etc/php/7.4/apache2/php.ini
+        regexp=';date.timezone ='
+        replace='date.time = Europe/Paris'
+        backup=yes
+
+    - name: Modify date.time zone php.ini cli
+      replace:
+        dest=/etc/php/7.4/cli/php.ini
+        regexp=';date.timezone ='
+        replace='date.time = Europe/Paris'
+        backup=yes
+
+    - name: Modify memory limit php.ini apache
+      replace:
+        dest=/etc/php/7.4/apache2/php.ini
+        regexp='memory_limit = 128M'
+        replace='memory_limit = 256M'
+        backup=yes
+
+    - name: Modify max execution time php.ini apache
+      replace:
+        dest=/etc/php/7.4/apache2/php.ini
+        regexp='max_execution_time = 30'
+        replace='max_execution_time = 3600'
+        backup=yes
+
+    - name: Modify max upload file php.ini apache
+      replace:
+        dest=/etc/php/7.4/apache2/php.ini
+        regexp='upload_max_filesize = 2M'
+        replace='upload_max_filesize = 20M'
+        backup=yes
+
+    - name: Modify max execution time php.ini cli
+      replace:
+        dest=/etc/php/7.4/cli/php.ini
+        regexp='max_execution_time = 30'
+        replace='max_execution_time = 3600'
+        backup=yes
+
+    - name: Modify max upload file php.ini cli
+      replace:
+        dest=/etc/php/7.4/cli/php.ini
+        regexp='upload_max_filesize = 2M'
+        replace='upload_max_filesize = 20M'
+        backup=yes
+
+    # PostgreSQL 9.x
+    - name: installer postgresql
+      apt: name=postgresql state=present
+
+    - name: installer postgresql-contrib-9*
+      apt: name=postgresql-contrib-9* state=present
+
+    - name: installer postgresql utils
+      apt:
+        name: "{{item}}"
+        state: present
+      with_items:
+        - postgresql-plperl
+        - postgresql-plpython
+        - postgresql-pltcl
+        - python-psycopg2
+
+    - name: Start PostgreSQL and enable at boot
+      service:
+        name=postgresql
+        enabled=yes
+        state=started

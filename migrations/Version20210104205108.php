@@ -20,7 +20,7 @@ final class Version20210104205108 extends AbstractMigration
     public function up(Schema $schema) : void
     {
         // this up() migration is auto-generated, please modify it to your needs
-        $this->addSql('ALTER TABLE user ADD is_verified TINYINT(1) NOT NULL, ADD PRIMARY KEY (id)');
+        $this->addSql('ALTER TABLE user ADD is_verified TINYINT(1) NOT NULL');
         $this->addSql('CREATE UNIQUE INDEX UNIQ_8D93D649F85E0677 ON user (username)');
     }
 

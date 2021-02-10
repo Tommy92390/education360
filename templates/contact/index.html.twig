@@ -1,5 +1,6 @@
 {% extends 'base.html.twig' %}
 
+{% block title %} Contact {% endblock %}
 
 {% block body %}
 
@@ -24,12 +25,13 @@
             {{ form_row(our_form.message, {'attr': {'class': 'form-control'}}) }}
 
         </div>
-
+        <div class="text-center">
+            <br>
         <div class="form-group">
-            <input type="submit" value="Send" class="btn btn-primary py-3 px-5">
+            <input type="submit" value="Envoyer!" class="btn btn-outline-primary py-3 px-5">
+        </div>
         </div>
         {{ form_end(our_form) }}
     </div>
 
-    </div>
 {% endblock %}
