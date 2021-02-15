@@ -1,76 +1,100 @@
 {% extends 'base.html.twig' %}
 
 {% block header %}
-<div class="topnav" id="myTopnav">
-    <a href="#" class="active">Education 360</a>
-    <div class="dropdown">
-        <span class="nav-bar-btn">
-            <a class="dropbtn">Soutien Scolaire</a>
-        </span>
-        <div class="dropdown-content">
-            <ul>
-                <li>
-                    <a class="dropdown-item" href="#">Cours particulier à domicile</a>
-                </li>
-                <li>
-                    <a class="dropdown-item" href="/cours_petit_groupe">Cours en petit groupe de 3 à 5 élèves au centre</a>
-                </li>
-                <li>
-                    <a class="dropdown-item" href="{{ path('cours_en_ligne') }}">Cours particulier en ligne</a>
-                </li>
-                <li>
-                    <a class="dropdown-item" href="#">Coaching scolaire au quotidien</a>
-                </li>
-                <li>
-                    <hr class="dropdown-divider">
-                </li>
-                <li>
-                    <a class="dropdown-item" href="#">Organisation, gestion et méthodologie</a>
-                </li>
-                <li>
-                    <a class="dropdown-item" href="#">Sorties d'école et aides aux devoirs</a>
-                </li>
-                <li>
-                    <a class="dropdown-item" href="#">Stage intensif durant les vacances scolaires</a>
-                </li>
-                <li>
-                    <a class="dropdown-item" href="#">Cours de programmation</a>
-                </li>
-            </ul>
-        </div>
-    </div>
+{#<div class="topnav" id="myTopnav">#}
+{#    <a href="#" class="active">Education 360</a>#}
+{#    <div class="dropdown">#}
+{#        <span class="nav-bar-btn">#}
+{#            <a class="dropbtn">Soutien Scolaire</a>#}
+{#        </span>#}
+{#        <div class="dropdown-content">#}
+{#            <ul>#}
+{#                <li>#}
+{#                    <a class="dropdown-item" href="#">Cours particulier à domicile</a>#}
+{#                </li>#}
+{#                <li>#}
+{#                    <a class="dropdown-item" href="/cours_petit_groupe">Cours en petit groupe de 3 à 5 élèves au centre</a>#}
+{#                </li>#}
+{#                <li>#}
+{#                    <a class="dropdown-item" href="{{ path('cours_en_ligne') }}">Cours particulier en ligne</a>#}
+{#                </li>#}
+{#                <li>#}
+{#                    <a class="dropdown-item" href="#">Coaching scolaire au quotidien</a>#}
+{#                </li>#}
+{#                <li>#}
+{#                    <hr class="dropdown-divider">#}
+{#                </li>#}
+{#                <li>#}
+{#                    <a class="dropdown-item" href="#">Organisation, gestion et méthodologie</a>#}
+{#                </li>#}
+{#                <li>#}
+{#                    <a class="dropdown-item" href="#">Sorties d'école et aides aux devoirs</a>#}
+{#                </li>#}
+{#                <li>#}
+{#                    <a class="dropdown-item" href="#">Stage intensif durant les vacances scolaires</a>#}
+{#                </li>#}
+{#                <li>#}
+{#                    <a class="dropdown-item" href="#">Cours de programmation</a>#}
+{#                </li>#}
+{#            </ul>#}
+{#        </div>#}
+{#    </div>#}
 
-    <div class="dropdown">
-        <span class="nav-bar-btn"><a class="dropbtn">Formation Professionnelle</a></span>
-        <div class="dropdown-content">
-            <ul>
-                <li><a class="dropdown-item" href="#">Bureautique</a></li>
-                <li><a class="dropdown-item" href="#">Français</a></li>
-                <li><a class="dropdown-item" href="#">FLE (Français Langue Etrangère)</a></li>
-                <li><a class="dropdown-item" href="#">Anglais</a></li>
-                <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="#">Programmation</a></li>
-                <li><a class="dropdown-item" href="#">Web développeur</a></li>
-                <li><a class="dropdown-item" href="#">Web designer</a></li>
-                <li><a class="dropdown-item" href="#">Comptabilité</a></li>
-                <li><a class="dropdown-item" href="#">Création et gestion d'entreprise</a></li>
-            </ul>
-        </div>
-    </div>
+{#    <div class="dropdown">#}
+{#        <span class="nav-bar-btn"><a class="dropbtn">Formation Professionnelle</a></span>#}
+{#        <div class="dropdown-content">#}
+{#            <ul>#}
+{#                <li><a class="dropdown-item" href="#">Bureautique</a></li>#}
+{#                <li><a class="dropdown-item" href="#">Français</a></li>#}
+{#                <li><a class="dropdown-item" href="#">FLE (Français Langue Etrangère)</a></li>#}
+{#                <li><a class="dropdown-item" href="#">Anglais</a></li>#}
+{#                <li><hr class="dropdown-divider"></li>#}
+{#                <li><a class="dropdown-item" href="#">Programmation</a></li>#}
+{#                <li><a class="dropdown-item" href="#">Web développeur</a></li>#}
+{#                <li><a class="dropdown-item" href="#">Web designer</a></li>#}
+{#                <li><a class="dropdown-item" href="#">Comptabilité</a></li>#}
+{#                <li><a class="dropdown-item" href="#">Création et gestion d'entreprise</a></li>#}
+{#            </ul>#}
+{#        </div>#}
+{#    </div>#}
 
-    <div class="dropdown">
-        <span class="nav-bar-btn"><a class="dropbtn">La petite classe</a></span>
-        <div class="dropdown-content">
-            <ul>
-                <li><a class="dropdown-item" href="#">Garde d'enfant classique</a></li>
-                <li><a class="dropdown-item" href="#">Garde d'enfant en anglais</a></li>
-                <li><a class="dropdown-item" href="#">Sortie d'école avec initiation à anglais</a></li>
-                <li><a class="dropdown-item" href="#">Activités et ateliers ludiques en anglais</a></li>
-            </ul>
+{#    <div class="dropdown">#}
+{#        <span class="nav-bar-btn"><a class="dropbtn">La petite classe</a></span>#}
+{#        <div class="dropdown-content">#}
+{#            <ul>#}
+{#                <li><a class="dropdown-item" href="#">Garde d'enfant classique</a></li>#}
+{#                <li><a class="dropdown-item" href="#">Garde d'enfant en anglais</a></li>#}
+{#                <li><a class="dropdown-item" href="#">Sortie d'école avec initiation à anglais</a></li>#}
+{#                <li><a class="dropdown-item" href="#">Activités et ateliers ludiques en anglais</a></li>#}
+{#            </ul>#}
+{#        </div>#}
+{#    </div>#}
+{#</div>#}
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Education 360</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+                <a class="nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="#">Features</a>
+                <a class="nav-link" href="#">Pricing</a>
+                <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+            </div>
         </div>
-    </div>
-</div>
+    </nav>
 {% endblock %}
+
+
+
+
+
+
+
+
+
 
 {% block footer %}
     <footer class="bg-yellow" id="footer">
@@ -85,7 +109,7 @@
             <div>
                 <a class="dropbtn">Recrutement</a>
                 <a class="dropbtn">Contacts</a>
-                <a href="javascript:void(0);" class="icon" onclick="myFunction()">&#9776;</a>
+{#                <a href="javascript:void(0);" class="icon" onclick="myFunction()">&#9776;</a>#}
             </div>
             <div>
                 <p>Téléphone : 01 42 00 96 24 <br>3 Boulevard d’Indochine 75019 Paris <br>education360paris@gmail.com</p>
