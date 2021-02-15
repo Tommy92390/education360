@@ -6,7 +6,7 @@ session_start();
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width device-width, initial-scale=1"> 
-    <link rel="stylesheet" type="text/css" href="public/assets/css/style_2.css">
+    <link rel="stylesheet" type="text/css" href="public/assets/css/old/style_2.css">
 	<!-- <link type="text/css" rel="stylesheet" href="assets/css/bootstrap.css" > -->
 </head>
 <body>
