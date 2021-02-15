@@ -22,6 +22,7 @@ class UserController extends AbstractController
     {
         return $this->render('user/index.html.twig', [
             'users' => $userRepository->findAll(),
+            'controller_name' => 'Utilisateurs',
         ]);
     }
 
@@ -45,6 +46,7 @@ class UserController extends AbstractController
         return $this->render('user/new.html.twig', [
             'user' => $user,
             'form' => $form->createView(),
+            'controller_name' => 'Nouvel utilisateur'
         ]);
     }
 
