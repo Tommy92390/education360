@@ -41,3 +41,7 @@
     transform: translate(-50%, -50%);
     text-align: center;
 }
+#inputUsername #inputPassword{
+    width: 50%;
+    position: center;
+}
